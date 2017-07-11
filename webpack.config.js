@@ -9,8 +9,8 @@ module.exports = {
   devtool: 'source-map',
 
   entry: [
-    path.resolve(__dirname, 'src/index.ts'),
-    path.resolve(__dirname, 'css/app.css'),
+    path.resolve(__dirname, 'src/index.tsx'),
+    path.resolve(__dirname, 'node_modules/todomvc-app-css/index.css'),
   ],
 
   output: {
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
 
   plugins: [
@@ -37,13 +37,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         enforce: 'pre',
         loader: 'tslint-loader',
         options: { emitErrors: true },
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: [
           'source-map-loader',
           'ts-loader',
